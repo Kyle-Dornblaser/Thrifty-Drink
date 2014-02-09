@@ -1,0 +1,18 @@
+#left {
+	float: left;
+	width: 50%;
+}
+
+#right {
+	float: right;
+	width: 50%;
+}
+
+#submit_drink input {
+	display: block;
+	margin: 10px 0;
+}
+
+#submit_drink input[type="radio"] {
+	display: inline;
+}
