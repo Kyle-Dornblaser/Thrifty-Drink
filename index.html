@@ -20,34 +20,32 @@
 	</head>
 
 	<body>
-		<div>
+		<div id="container">
 			<header>
 				<h1>Thrifty Drinks Prototype</h1>
 			</header>
-			
 			<div id="left">
 				<h2>Find drink prices</h2>
-				<form>
-					<input type="text" name="" value="Restaurant Name" onfocus="this.value=''" />
+				<form action="search.php" method="post">
+					<input type="text" name="search" placeholder="Restaurant Name" />
 					<input type="submit" value="Search"/>
 				</form>
 			</div>
 			
 			<div id="right">
 				<h2>Submit Drink Price</h2>
-				<form id="submit_drink">
-					<input type="text" name="" value="Restaurant Name" onfocus="this.value=''" required />
-					<input type="text" name="" value="Zip Code" onfocus="this.value=''" required />
-					<input type="text" name="" value="Drink Name" onfocus="this.value=''" required />
-					<input type="text" name="" value="Price" onfocus="this.value=''" required />
+				<form id="submit_drink" action="submit.php" method="post">
+					<input type="text" name="" placeholder="Restaurant Name" required />
+					<input type="text" name="" placeholder="Zip Code" required />
+					<input type="text" name="" placeholder="Drink Name" required />
+					<input type="text" name="" placeholder="Price"  required />
 					<input type="radio" name="drink_type" value="beer" checked="checked">Beer
 					<input type="radio" name="drink_type" value="wine">Wine
 					<input type="radio" name="drink_type" value="spirit">Spirit
 					<input type="submit" value="Submit"/>
 				</form>
 			</div>
-
-			
+			<div class="clear"></div>
 		</div>
 	</body>
 </html>
