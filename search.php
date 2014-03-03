@@ -1,16 +1,15 @@
 <?php 
-	$restaurant = $_POST['search'];
+	$restaurant = mysql_real_escape_string($_POST['search']);
 	$connection = mysql_connect('127.0.0.1','root','');
 	mysql_select_db('thrifty_drink', $connection);
-	$result = mysql_query("SELECT * FROM price_submissions ps JOIN restaurants r on ps.restaurant_id = r.restaurant_id WHERE r.name = '$restaurant';", $connection);
+	$result = mysql_query("SELECT * FROM price_submissions ps JOIN restaurants r on ps.restaurant_id = r.restaurant_id JOIN drinks d ON ps.drink_id = d.drink_id WHERE r.name = '$restaurant';", $connection);
 	//$rows = mysql_fetch_array($result);  //false if not in database //true if in db
 	
 	//adds all the prices into a two dimensional array $drinkPriceArray['drink_id][list of drink prices]
 	$drinkPriceArray = array();
 	while($row = mysql_fetch_array($result))
 	{
-		//var_dump($row);
-		$drink_id = $row['drink_id'];
+		$drink_id = $row['name'];
 		$price = $row['price'];
 		if(isset($drinkPriceArray[$drink_id])) {
 			$nextIndex = count($drinkPriceArray[$drink_id]);
@@ -19,8 +18,19 @@
 			$drinkPriceArray[$drink_id][0] = $price;
 		}
 	}
-	
-	
+	$drinkAveragePrice = array();
+	foreach ($drinkPriceArray as $drink_id => $drink_prices)
+	{
+		$sumPrice = 0;
+		$counter = 0;
+		foreach($drink_prices as $drink_price)
+		{
+			$sumPrice += $drink_price;
+			$counter++;
+		}
+		$averagePrice = $sumPrice / $counter;
+		$drinkAveragePrice[$drink_id] = $averagePrice;
+	}
 	
 	
 	
@@ -35,7 +45,7 @@
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title>Thrifty Drinks Prototype</title>
+		<title>Thrifty Drinks Alpha</title>
 		<meta name="description" content="">
 		<meta name="author" content="Kyle">
 
@@ -50,10 +60,15 @@
 	<body>
 		<div id="container">
 			<header>
-				<h1>Thrifty Drinks Prototype</h1>
+				<h1><a href="index.html">Thrifty Drinks Alpha</a></h1>
 			</header>
 			<h2>Search Results</h2>
-			<strong><?php echo $_POST['search']; ?> has 15 drinks on record</strong>
+			<strong><?= $_POST['search']; ?> has <?= count($drinkAveragePrice); ?> drinks on record</strong>
+			<?php
+				foreach($drinkAveragePrice as $key => $value) {
+					echo "<p>" . $key . " average price is " . $value . "</p>";
+				}
+			?>
 		</div>
 	</body>
 </html>
