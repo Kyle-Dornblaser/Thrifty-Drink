@@ -1,5 +1,5 @@
 <?php 
-	$restaurant = mysql_real_escape_string($_POST['search']);
+	$restaurant = mysql_real_escape_string($_GET['search']);
 	$connection = mysql_connect('127.0.0.1','root','');
 	mysql_select_db('thrifty_drink', $connection);
 	$result = mysql_query("SELECT * FROM price_submissions ps JOIN restaurants r on ps.restaurant_id = r.restaurant_id JOIN drinks d ON ps.drink_id = d.drink_id WHERE r.name = '$restaurant';", $connection);
@@ -36,39 +36,12 @@
 	
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-
-		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
-		Remove this if you use the .htaccess -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-		<title>Thrifty Drinks Alpha</title>
-		<meta name="description" content="">
-		<meta name="author" content="Kyle">
-
-		<meta name="viewport" content="width=device-width; initial-scale=1.0">
-
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<link rel="stylesheet" type="text/css" href="style.css">
-	</head>
-
-	<body>
-		<div id="container">
-			<header>
-				<h1><a href="index.html">Thrifty Drinks Alpha</a></h1>
-			</header>
+<?php include 'header.php'; ?>
 			<h2>Search Results</h2>
-			<strong><?= $_POST['search']; ?> has <?= count($drinkAveragePrice); ?> drinks on record</strong>
+			<strong><?= $_GET['search']; ?> has <?= count($drinkAveragePrice); ?> drinks on record</strong>
 			<?php
 				foreach($drinkAveragePrice as $key => $value) {
-					echo "<p>" . $key . " average price is " . $value . "</p>";
+					echo "<p><em>" . $key . "</em> average price is <em>$" . $value . "</em></p>";
 				}
 			?>
-		</div>
-	</body>
-</html>
+<?php include 'footer.php'; ?>
