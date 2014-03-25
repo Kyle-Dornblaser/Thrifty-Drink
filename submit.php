@@ -1,9 +1,16 @@
 <?php
+$connection = mysql_connect('127.0.0.1', 'root', '');
 $restaurant = mysql_real_escape_string($_POST['restaurant']);
 $zip = mysql_real_escape_string($_POST['zip']);
 $drink = mysql_real_escape_string($_POST['drink']);
 $price = mysql_real_escape_string($_POST['price']);
 $drink_type = mysql_real_escape_string($_POST['drink_type']);
+
+var_dump($restaurant);
+var_dump($zip);
+var_dump($drink);
+var_dump($price);
+var_dump($drink_type);
 
 // NEED LIBRARY TO CHECK FOR SIMILAR NAMES LIKE GOOGLE DID YOU MEAN
 $restaurantPK = searchDatabase($restaurant, 'restaurants', 'name', 'restaurant_id');
@@ -87,7 +94,7 @@ function submit($restaurant, $drink, $drink_type, $price, $zip, $drink_id, $rest
 	mysql_query("INSERT INTO price_submissions VALUES ('', '$drink_id', '$restaurant_id', '$username', $price, $zip);", $connection);
 }
 
-header("Location: thanks.php");
+//header("Location: thanks.php");
 ?>
 
 <?php

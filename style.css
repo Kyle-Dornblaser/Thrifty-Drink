@@ -53,7 +53,9 @@ em {
 
 #container {
 	max-width: 1000px;
+	min-width: 300px;
 	margin: 30px auto;
+	display: block;
 	/*background: #cbbaf7;*/
 	padding: 30px;
 }
@@ -82,7 +84,7 @@ em {
 	clear: both;
 }
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px), only screen and (max-device-width: 700px) {
 	#left {
 		float: none;
 		width: 100%;
