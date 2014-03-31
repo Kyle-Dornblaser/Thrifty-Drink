@@ -1,0 +1,29 @@
+
+<?php $__env->startSection('jumbotron'); ?>
+
+<div class="col-sm-12">
+	<h1>Benefits of signing up</h1>
+	<ul>
+		<li>
+			View all your past submissions
+		</li>
+		<li>
+			Save your favorite restaurants and bars for easy access (future feature)
+		</li>
+		<li>
+			Not subject to CAPTCHA (future feature)
+		</li>
+	</ul>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main-content'); ?>
+
+<div class="col-sm-12">
+	<h1>Register</h1>
+
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

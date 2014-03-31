@@ -1,0 +1,133 @@
+
+<?php $__env->startSection('jumbotron'); ?>
+
+<div class="col-sm-8">
+	<h1>Get the price before you order</h1>
+
+	<p>
+		Find drink prices from your favorite bars and restaurants
+	</p>
+
+	<!--<form>
+		<fieldset>
+			<div class="form-group">
+				<div class="input-group">
+					<input type="text" class="form-control" id="search" placeholder="Enter restaurant or bar here">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							Search
+						</button> </span>
+				</div>
+			</div>
+		</fieldset>
+	</form>-->
+	<a class="btn btn-lg btn-info" href="/restaurants" role="button" style="margin: 0 10px 10px 0">Search</a> 
+	<a class="btn btn-lg btn-default" href="/restaurants" role="button" style="margin: 0 10px 10px 0">Browse All Restaurants</a>
+</div>
+<div class="col-sm-6">
+	<!--<h2>Recent Submissions</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Restaurant</th>
+				<th>Drink</th>
+				<th>Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Taco Mac</td>
+				<td>Bud Light</td>
+				<td>$3.00</td>
+			</tr>
+			<tr>
+				<td>Chili's</td>
+				<td>Blue Moon</td>
+				<td>$5.00</td>
+			</tr>
+			<tr>
+				<td>Taco Mac</td>
+				<td>Bud Light</td>
+				<td>$3.00</td>
+			</tr>
+			<tr>
+				<td>Chili's</td>
+				<td>Blue Moon</td>
+				<td>$5.00</td>
+			</tr>
+		</tbody>
+	</table>-->
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main-content'); ?>
+
+<div class="col-sm-6" id="submit-description">
+	<div class="well">
+		<h1>Spread the knowledge</h1>
+		<p>
+			Submit drinks that you have bought so others can benefit from it
+		</p>
+	</div>
+</div>
+<div class="col-sm-6">
+	<?php echo Form::open(array(
+	'action'       => 'DatabaseController@saveSubmission'
+	)); ?>
+	<div class="form-group">
+		<label class="control-label" for="restaurantName">Restaurant Name</label>
+		<input class="form-control" id="restaurantName" name="restaurant" type="text" placeholder="Restaurant Name">
+	</div>
+	<div class="form-group">
+		<label class="control-label" for="zipCode">Zip Code</label>
+		<input class="form-control" id="zipCode" name="zip" type="text" placeholder="Zip Code">
+	</div>
+	<div class="form-group">
+		<label class="control-label" for="drinkName">Drink Name</label>
+		<input class="form-control" id="drinkName" name="drink" type="text" placeholder="Drink Name">
+	</div>
+	<div class="form-group">
+		<label class="control-label" for="drinkPrice">Drink Price</label>
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+			<input type="text" class="form-control" name="price" id="drinkPrice">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Drink Type</label>
+		<div class="radio">
+			<label>
+				<input type="radio" name="drink_type" value="beer" checked="checked">
+				Beer</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="drink_type" value="wine">
+				Wine</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="drink_type" value="cocktail">
+				Cocktail</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="drink_type" value="other">
+				Other</label>
+		</div>
+		<div class="form-group">
+
+			<button type="reset" class="btn btn-default">
+				Clear
+			</button>
+			<button type="submit" class="btn btn-primary">
+				Submit
+			</button>
+			<?php echo Form::close(); ?>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,4 +1,10 @@
+a {
+	color: #2c3e50;
+}
+
 .jumbotron {
+	
+	/*background: url('/i/jumbo-bg.jpg') no-repeat right #2c3e50;*/
 	background: #2c3e50;
 	color: #fff;
 }

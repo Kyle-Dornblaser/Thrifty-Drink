@@ -1,0 +1,25 @@
+
+<?php $__env->startSection('jumbotron'); ?>
+
+<div class="col-sm-12">
+	<h1><?php echo $name; ?></h1>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main-content'); ?>
+
+<div class="col-sm-12">
+	<?php if ($submissions == null): ?>
+	<h1>No drinks found for <?php echo $name; ?></h1>
+	<?php else: ?>
+		<?php foreach ($submissions as $submission): ?>
+				<p><strong><?php echo $submission -> drink_id; ?></strong>: &#36;<?php echo number_format($submission -> price, 2); ?></p>
+				
+			
+		<?php endforeach; ?>
+	<?php endif; ?>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

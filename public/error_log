@@ -1,1 +1,14 @@
 [26-Mar-2014 23:20:30 UTC] PHP Parse error:  syntax error, unexpected ''main-content); ?>' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/storage/views/3e98bec28b0b96bb2617cba4d3e37d43 on line 64
+[29-Mar-2014 16:45:23 UTC] PHP Fatal error:  Call to undefined function get() in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/routes.php on line 27
+[29-Mar-2014 16:45:46 UTC] PHP Fatal error:  Call to undefined function get() in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/routes.php on line 27
+[29-Mar-2014 16:55:31 UTC] PHP Fatal error:  Class 'Drink' not found in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/routes.php on line 26
+[30-Mar-2014 23:40:43 UTC] PHP Parse error:  syntax error, unexpected '@', expecting ',' or ';' in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/storage/views/c71e8037b88729111c5c8a74d7d57a44 on line 72
+[30-Mar-2014 23:46:12 UTC] PHP Fatal error:  Class 'make' not found in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 7
+[30-Mar-2014 23:47:13 UTC] PHP Parse error:  syntax error, unexpected '}' in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 9
+[30-Mar-2014 23:47:40 UTC] PHP Parse error:  syntax error, unexpected '}' in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 9
+[30-Mar-2014 23:47:50 UTC] PHP Parse error:  syntax error, unexpected '}' in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 9
+[31-Mar-2014 00:54:01 UTC] PHP Fatal error:  Class 'Price_Submission' not found in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 22
+[31-Mar-2014 00:56:37 UTC] PHP Fatal error:  Class 'Price_Submission' not found in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/controllers/DatabaseController.php on line 22
+[31-Mar-2014 01:07:52 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/storage/views/eb51b210033fa98a81f8e2d4775e0060 on line 13
+[31-Mar-2014 01:09:15 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/storage/views/eb51b210033fa98a81f8e2d4775e0060 on line 13
+[31-Mar-2014 01:10:52 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home5/tabletdi/public_html/dornblaser/school/sd2/Thrifty-Drink/laravel/app/storage/views/eb51b210033fa98a81f8e2d4775e0060 on line 16

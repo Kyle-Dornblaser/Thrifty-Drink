@@ -1,0 +1,19 @@
+
+<?php $__env->startSection('jumbotron'); ?>
+
+<div class="col-sm-12">
+	<h1>Thank you!</h1>
+	
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('main-content'); ?>
+
+<div class="col-sm-12">
+	<h1>We saved your submission.</h1>
+
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
