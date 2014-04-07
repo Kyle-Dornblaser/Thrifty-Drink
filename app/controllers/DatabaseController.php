@@ -23,16 +23,22 @@ class DatabaseController extends BaseController {
 			$restaurant -> id = $restaurantName;
 			$restaurant -> save();
 		}
-
+		
+		if (Auth::check()) {
+			$username = Auth::user()-> id;
+		} else {
+			$username = 'GUEST';
+		}
+		
 		$price_submission = new PriceSubmission;
 		$price_submission -> restaurant_id = $restaurantName;
 		$price_submission -> drink_id = $drinkName;
 		$price_submission -> zip = $zip;
-		$price_submission -> user_id = 'GUEST';
+		$price_submission -> user_id = $username;
 		$price_submission -> price = $price;
 		$price_submission -> save();
 		
-		return View::make('thanks');
+		return View::make('thanks', array('restaurant' => $restaurantName));
 	}
 
 	public function createDatabase() {
