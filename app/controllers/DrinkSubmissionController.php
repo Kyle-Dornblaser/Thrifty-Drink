@@ -11,15 +11,24 @@ class DrinkSubmissionController extends BaseController {
 		}
 	}
 
-	public function deleteSubmission() {
+	public function deleteSubmission(PriceSubmission $priceSubmission) {
 		if (Auth::check()) {
 			$username = Auth::user() -> id;
-			$priceSubmissionId = Input::get('id');
-			$priceSubmission = PriceSubmission::find($priceSubmissionId);
 			if ($priceSubmission -> user_id == $username) {
 				$priceSubmission -> delete();
 			}
 		}
+		return Redirect::to('/mysubmissions');
+	}
+	
+	public function showEditSubmission(PriceSubmission $priceSubmission) {
+		return View::make('editsubmission', array('priceSubmission' => $priceSubmission));
+	}
+	
+	public function editSubmission(PriceSubmission $priceSubmission) {
+		$price = Input::get('price');	
+		$priceSubmission -> price = $price;
+		$priceSubmission -> save();
 		return Redirect::to('/mysubmissions');
 	}
 

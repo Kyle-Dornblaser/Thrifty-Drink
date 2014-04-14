@@ -26,9 +26,9 @@
 				<td>{{ $submission -> restaurant_id }}</td>
 				<td>{{ $submission -> drink_id }}</td>
 				<td>&#36;{{ number_format($submission -> price, 2) }}</td>
-				<td><button type="submit" class="btn btn-xs btn-default">
+				<td><a href="{{ url('/mysubmissions/edit/' . $submission -> id) }}" class="btn btn-xs btn-default">
 					<span class="glyphicon glyphicon-edit"></span>
-				</button>
+				</a>
 				<button onclick="deleteModal({{ $submission->id }})" type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteModal">
 					<span class="glyphicon glyphicon-remove"></span>
 				</button></td>
@@ -58,7 +58,7 @@
 				</p>
 			</div>
 			<div class="modal-footer">
-				{{ Form::open(array('action' => 'DrinkSubmissionController@deleteSubmission')) }}
+				{{ Form::open(array('id' => "deleteForm")) }}
 				{{ Form::hidden('id','', array('id' => 'deleteFormHidden'))}}
 				<button type="button" class="btn btn-default" data-dismiss="modal">
 					Cancel

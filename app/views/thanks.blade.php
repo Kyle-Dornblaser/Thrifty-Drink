@@ -12,7 +12,8 @@
 @section('main-content')
 
 <div class="col-sm-12">
-	<h1>We saved your submission.</h1>
+	<h2>We saved your submission.</h2>
+	<p>You can view your submission on the <a href="/restaurant/{{ $restaurant }}">{{$restaurant}}</a> page.</p>
 
 </div>
 @stop

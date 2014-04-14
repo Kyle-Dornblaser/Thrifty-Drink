@@ -4,95 +4,61 @@
 
 <div class="col-sm-8">
 	<h1>Get the price before you order</h1>
-
 	<p>
 		Find drink prices from your favorite bars and restaurants
 	</p>
-
-	<!--<form>
+	<div class="btn btn-lg btn-info" id="searchButton" role="button" style="margin: 0 10px 10px 0">
+		Search
+	</div>
+	<a class="btn btn-lg btn-default" href="/restaurants" role="button" style="margin: 0 10px 10px 0;">Browse All Restaurants</a>
+	<div id="searchForm" style="display:none;margin: 10px 0 0 0;">
+		{{ Form::open(array('action' => 'RestaurantController@search')) }}
 		<fieldset>
 			<div class="form-group">
 				<div class="input-group">
-					<input type="text" class="form-control" id="search" placeholder="Enter restaurant or bar here">
+					<input type="text" class="form-control" id="search" name="search" placeholder="Enter restaurant or bar here" required="">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button class="btn btn-default" type="submit">
 							Search
 						</button> </span>
 				</div>
 			</div>
 		</fieldset>
-	</form>-->
-	<a class="btn btn-lg btn-info" href="/restaurants" role="button" style="margin: 0 10px 10px 0">Search</a> 
-	<a class="btn btn-lg btn-default" href="/restaurants" role="button" style="margin: 0 10px 10px 0">Browse All Restaurants</a>
+		{{ Form::close() }}
+	</div>
 </div>
-<div class="col-sm-6">
-	<!--<h2>Recent Submissions</h2>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Restaurant</th>
-				<th>Drink</th>
-				<th>Price</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Taco Mac</td>
-				<td>Bud Light</td>
-				<td>$3.00</td>
-			</tr>
-			<tr>
-				<td>Chili's</td>
-				<td>Blue Moon</td>
-				<td>$5.00</td>
-			</tr>
-			<tr>
-				<td>Taco Mac</td>
-				<td>Bud Light</td>
-				<td>$3.00</td>
-			</tr>
-			<tr>
-				<td>Chili's</td>
-				<td>Blue Moon</td>
-				<td>$5.00</td>
-			</tr>
-		</tbody>
-	</table>-->
-</div>
-
 @stop
 
 @section('main-content')
 
 <div class="col-sm-6" id="submit-description">
-	<div class="well">
-		<h1>Spread the knowledge</h1>
-		<p>
-			Submit drinks that you have bought so others can benefit from it
-		</p>
-	</div>
+	<h1>Submit your price</h1>
+	<p>
+		Submit drinks that you have bought so others can benefit from it
+	</p>
 </div>
 <div class="col-sm-6">
 	{{ Form::open(array(
-	'action'       => 'DatabaseController@saveSubmission'
+	'action'       => 'DatabaseController@saveSubmission',
+	'id' => 'submitDrink'
 	)) }}
 	<div class="form-group">
 		<label class="control-label" for="restaurantName">Restaurant Name</label>
-		<input class="form-control" id="restaurantName" name="restaurant" type="text" placeholder="Restaurant Name">
+		<input class="form-control" id="restaurantName" name="restaurant" type="text" placeholder="Restaurant Name" required="">
 	</div>
 	<div class="form-group">
 		<label class="control-label" for="zipCode">Zip Code</label>
-		<input class="form-control" id="zipCode" name="zip" type="text" placeholder="Zip Code">
+		<input class="form-control" id="zipCode" name="zip" type="text" placeholder="Zip Code" required="">
 	</div>
 	<div class="form-group">
 		<label class="control-label" for="drinkName">Drink Name</label>
-		<input class="form-control" id="drinkName" name="drink" type="text" placeholder="Drink Name">
+		<input class="form-control" id="drinkName" name="drink" type="text" placeholder="Drink Name" required="">
 	</div>
 	<div class="form-group">
 		<label class="control-label" for="drinkPrice">Drink Price</label>
 		<div class="input-group">
 			<span class="input-group-addon">$</span>
-			<input type="text" class="form-control" name="price" id="drinkPrice">
+			<input type="text" class="form-control" name="price" id="drinkPrice" required="">
 		</div>
 	</div>
 	<div class="form-group">
@@ -117,16 +83,17 @@
 				<input type="radio" name="drink_type" value="other">
 				Other</label>
 		</div>
-		<div class="form-group">
-
-			<button type="reset" class="btn btn-default">
-				Clear
-			</button>
-			<button type="submit" class="btn btn-primary">
-				Submit
-			</button>
-			{{ Form::close() }}
-		</div>
 	</div>
+	<div class="form-group">
+
+		<button type="reset" class="btn btn-default">
+			Clear
+		</button>
+		<button type="submit" class="btn btn-primary">
+			Submit
+		</button>
+
+	</div>
+	{{ Form::close() }}
 </div>
 @stop

@@ -2,25 +2,25 @@
 
 class RestaurantController extends BaseController {
 
-	public function showRestaurant($name) {
+	public function showRestaurant(Restaurant $restaurant) {
 		$submissions = array();
 		$submissions['Beer'] = 		PriceSubmission::join('drinks', 'drinks.id', '=', 'price_submissions.drink_id')->
-									where('restaurant_id', $name) ->
+									where('restaurant_id', $restaurant -> id) ->
 									where('type', 'beer') ->
 									select('drink_id', 'price') -> 
 									get();
 		$submissions['Wine'] =		PriceSubmission::join('drinks', 'drinks.id', '=', 'price_submissions.drink_id')->
-									where('restaurant_id', $name) ->
+									where('restaurant_id', $restaurant -> id) ->
 									where('type', 'wine') ->
 									select('drink_id', 'price') -> 
 									get();
 		$submissions['Cocktail'] =	PriceSubmission::join('drinks', 'drinks.id', '=', 'price_submissions.drink_id')->
-									where('restaurant_id', $name) ->
+									where('restaurant_id', $restaurant -> id) ->
 									where('type', 'cocktail') ->
 									select('drink_id', 'price') -> 
 									get();
 		$submissions['Other'] =		PriceSubmission::join('drinks', 'drinks.id', '=', 'price_submissions.drink_id')->
-									where('restaurant_id', $name) ->
+									where('restaurant_id', $restaurant -> id) ->
 									where('type', 'other') ->
 									select('drink_id', 'price') -> 
 									get();
@@ -39,7 +39,7 @@ class RestaurantController extends BaseController {
 		ksort($submissions['Cocktail']); 
 		ksort($submissions['Other']); 
 		
-		return View::make('restaurant', array('name' => $name, 'submissions' => $submissions));
+		return View::make('restaurant', array('name' => $restaurant -> id, 'submissions' => $submissions));
 	}
 
 	public function showAllRestaurants() {

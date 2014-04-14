@@ -9,5 +9,5 @@ $(document).click(function (e) {
 });
 
 function deleteModal(id) {
-	$('#deleteFormHidden').val(id);
+	$('#deleteForm').attr("action", "/mysubmissions/delete/" + id);
 }
