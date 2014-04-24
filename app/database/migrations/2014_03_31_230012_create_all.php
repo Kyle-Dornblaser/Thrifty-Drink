@@ -60,10 +60,10 @@ class CreateAll extends Migration {
 	 * @return void
 	 */
 	public function down() {
+		Schema::drop('price_submissions');
 		Schema::drop('users');
 		Schema::drop('restaurants');
 		Schema::drop('drinks');
-		Schema::drop('price_submissions');
 	}
 
 }

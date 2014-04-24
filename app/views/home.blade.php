@@ -97,3 +97,34 @@
 	{{ Form::close() }}
 </div>
 @stop
+
+@section('scripts')
+<script>
+
+	$('#submitDrink :input').focus(function() {
+		if ($('#zipCode').val() == '') {
+			getLocation();
+		}
+	});
+	
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	}
+
+	function showPosition(position) {
+
+		$.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ', ' + position.coords.longitude + '&sensor=true&result_type=postal_code&key=AIzaSyAGA5gNtINOy6Zx_JEkjBls3OPsj8P0gc8', function(result) {
+			var zip = result.results[0]['address_components'][0]['short_name'];
+			var patt = /\b\d{5}\b/;
+			if (patt.test(zip)) {
+				$('#zipCode').val(zip);
+			}
+		});
+
+	}
+</script>
+@stop

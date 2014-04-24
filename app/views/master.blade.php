@@ -145,7 +145,6 @@
 				</div>
 			</div>
 		</footer>
-		@yield('scripts')
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -153,5 +152,6 @@
 		<script src="/bootstrap/js/bootstrap.min.js"></script>
 		<script src="/bootstrap/js/jquery.validate.min.js"></script>
 		<script src="/bootstrap/js/fade.js"></script>
+		@yield('scripts')
 	</body>
 </html>

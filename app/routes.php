@@ -19,6 +19,7 @@ Route::get('/', array('as' => 'home', function() {
 	return View::make('home');
 }));
 
+
 Route::group(array('before' => 'guest'), function() {
 
 	Route::get('/register', array('as' => 'register', function() {
