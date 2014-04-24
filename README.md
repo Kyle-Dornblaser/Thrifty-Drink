@@ -1,8 +1,6 @@
 #Thrifty-Drink#
-=============
 
 ##To Do/Future Features##
-=============
 * Add Saved Restaurants
 * AJAX autocomplete dropdowns while filling in forms
 * Use zip code to give a local price and worldwide/national price
@@ -13,7 +11,6 @@
 * Let users flag bad submissions
 
 ##Completed Features##
-=============
 * Implement MVC Framework
 * Implement Bootstrap Framework
 * Get ZIP code from users Geolocation automatically
