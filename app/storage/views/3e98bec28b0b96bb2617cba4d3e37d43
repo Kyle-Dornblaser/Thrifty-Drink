@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script>
-			if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-				var msViewportStyle = document.createElement("style");
-				msViewportStyle.appendChild(document.createTextNode("@-ms-viewport{width:auto!important}"));
-				document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-			}
-		</script>
-		<style>
-			@-webkit-viewport{width:device-width}
-			@-moz-viewport{width:device-width}
-			@-ms-viewport{width:device-width}
-			@-o-viewport{width:device-width}
-			@viewport{width:device-width}
-		</style>
 		<meta charset="utf-8">
 		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">

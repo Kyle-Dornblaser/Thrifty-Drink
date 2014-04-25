@@ -3,28 +3,30 @@
 @section('jumbotron')
 
 <div class="col-sm-8">
-	<h1>Get the price before you order</h1>
-	<p>
-		Find drink prices from your favorite bars and restaurants
-	</p>
-	<div class="btn btn-lg btn-info" id="searchButton" role="button" style="margin: 0 10px 10px 0">
-		Search
-	</div>
-	<a class="btn btn-lg btn-default" href="/restaurants" role="button" style="margin: 0 10px 10px 0;">Browse All Restaurants</a>
-	<div id="searchForm" style="display:none;margin: 10px 0 0 0;">
-		{{ Form::open(array('action' => 'RestaurantController@search')) }}
-		<fieldset>
-			<div class="form-group">
-				<div class="input-group">
-					<input type="text" class="form-control" id="search" name="search" placeholder="Enter restaurant or bar here" required="">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="submit">
-							Search
-						</button> </span>
+	<div class="animated fadeInLeft">
+		<h1>Get the price before you order</h1>
+		<p>
+			Find drink prices from your favorite bars and restaurants
+		</p>
+		<div class="btn btn-lg btn-info" id="searchButton" role="button" style="margin: 0 10px 10px 0">
+			Search
+		</div>
+		<a class="btn btn-lg btn-default" href="/restaurants" role="button" style="margin: 0 10px 10px 0;">Browse All Restaurants</a>
+		<div id="searchForm" style="display:none;margin: 10px 0 0 0;">
+			{{ Form::open(array('action' => 'RestaurantController@search')) }}
+			<fieldset>
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" class="form-control" id="search" name="search" placeholder="Enter restaurant or bar here" required="">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								Search
+							</button> </span>
+					</div>
 				</div>
-			</div>
-		</fieldset>
-		{{ Form::close() }}
+			</fieldset>
+			{{ Form::close() }}
+		</div>
 	</div>
 </div>
 @stop
@@ -85,6 +87,9 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<div id="captcha"></div>
+	</div>
+	<div class="form-group">
 
 		<button type="reset" class="btn btn-default">
 			Clear
@@ -99,14 +104,19 @@
 @stop
 
 @section('scripts')
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script>
+	Recaptcha.create("6LeKgPISAAAAAO0SpYBQjP1CbmFzlaXlQkchCk4Q", "captcha", {
+		theme : "white",
+		callback : Recaptcha.focus_response_field
+	});
 
 	$('#submitDrink :input').focus(function() {
 		if ($('#zipCode').val() == '') {
 			getLocation();
 		}
 	});
-	
+
 	function getLocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(showPosition);
