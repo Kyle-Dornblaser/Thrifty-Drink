@@ -34,8 +34,7 @@ class UserController extends BaseController {
 
 	public function logout() {
 		Auth::logout();
-		return Redirect::to('/')->with('flash_notice', 'You are successfully logged out.');
+		return Redirect::to('/') -> with(array('flash_notice' => 'You have successfully logged out.', 'class' => 'alert-success'));
 	}
-
 }
 ?>

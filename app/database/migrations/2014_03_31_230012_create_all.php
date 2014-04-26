@@ -17,6 +17,7 @@ class CreateAll extends Migration {
 			$table -> string('id', 25) -> primary();
 			$table -> string('password', 60);
 			$table -> string('email', 30);
+			$table -> string('remember_token', 100);
 			$table -> timestamps();
 		});
 
@@ -39,7 +40,7 @@ class CreateAll extends Migration {
 		Schema::create('price_submissions', function($table) {
 			$table -> engine = 'InnoDB';
 
-			$table -> increments('id') -> primary();
+			$table -> increments('id');
 			$table -> string('drink_id', 30);
 			$table -> string('restaurant_id', 30);
 			$table -> string('user_id', 25);

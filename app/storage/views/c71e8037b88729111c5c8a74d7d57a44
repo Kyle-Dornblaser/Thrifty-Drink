@@ -85,9 +85,13 @@
 				Other</label>
 		</div>
 	</div>
+	<?php if(Auth::guest()): ?>
 	<div class="form-group">
-		<div id="captcha"></div>
+		<label class="control-label">Prove you human or at least a clever computer</label>
+		<p>Logged in users don't see CAPTCHA. <?php echo HTML::linkRoute('signin', 'Login'); ?> or <?php echo HTML::linkRoute('register', 'register'); ?> now.</p>
+		<div id="recaptcha" style="margin-top: 20px;"></div>
 	</div>
+	<?php endif; ?>
 	<div class="form-group">
 
 		<button type="reset" class="btn btn-default">
@@ -105,15 +109,21 @@
 <?php $__env->startSection('scripts'); ?>
 <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
 <script>
-	Recaptcha.create("6LeKgPISAAAAAO0SpYBQjP1CbmFzlaXlQkchCk4Q", "captcha", {
-		theme : "white",
-		callback : Recaptcha.focus_response_field
-	});
 
-	$('#submitDrink :input').focus(function() {
-		if ($('#zipCode').val() == '') {
-			getLocation();
-		}
+ Recaptcha.create("6LeKgPISAAAAAO0SpYBQjP1CbmFzlaXlQkchCk4Q",
+    "recaptcha",
+    {
+      theme: "clean",
+    }
+  );
+
+	$(document).ready(function() {
+		//$('#zipCode').focus(function() {
+		$('#submitDrink :input').focus(function() {
+			if ($('#zipCode').val() == '') {
+				getLocation();
+			}
+		});
 	});
 
 	function getLocation() {
@@ -129,11 +139,13 @@
 		$.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ', ' + position.coords.longitude + '&sensor=true&result_type=postal_code&key=AIzaSyAGA5gNtINOy6Zx_JEkjBls3OPsj8P0gc8', function(result) {
 			var zip = result.results[0]['address_components'][0]['short_name'];
 			var patt = /\b\d{5}\b/;
+			
+			console.log(zip);
 			if (patt.test(zip)) {
 				$('#zipCode').val(zip);
 			}
+			
 		});
-
 	}
 </script>
 <?php $__env->stopSection(); ?>

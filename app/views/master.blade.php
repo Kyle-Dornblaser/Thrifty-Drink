@@ -83,7 +83,7 @@
 
 				@if(Session::has('flash_notice'))
 				<div class="col-sm-12">
-					<div class="alert alert-dismissable alert-info">
+					<div class="alert alert-dismissable {{ Session::get('class') }}">
 						<button type="button" class="close" data-dismiss="alert">
 							×
 						</button>

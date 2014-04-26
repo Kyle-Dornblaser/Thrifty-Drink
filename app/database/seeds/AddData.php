@@ -5,7 +5,7 @@ class AddData extends Seeder {
 
 		$user = new User;
 		$user -> id = 'GUEST';
-		$user -> password = 'GUEST';
+		$user -> password = Hash::make('GUEST');
 		$user -> email = 'guest@guest.com';
 		$user -> save();
 
